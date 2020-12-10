@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: modresorts
+  name: modresorts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: modresorts
+  template:
+    metadata:
+      labels:
+        app: modresorts
+    spec:
+      containers:
+        - image: docker.io/application
+          imagePullPolicy: Always
+          name: modresorts
+          env:
+          - name: USER
+            value: ADMIN
+          - name: PASSWORD
+            value: oracle
+          - name: URL
+            value: "jdbc:oracle:thin:@//192.168.122.105:31938/XE"
+          ports:
+            - containerPort: 9080

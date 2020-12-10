@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: modresorts
+  name: modresorts-admin
+spec:
+  port:
+    targetPort: admin
+  to:
+    kind: Service
+    name: modresorts
+    weight: 100
